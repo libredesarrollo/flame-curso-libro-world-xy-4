@@ -33,9 +33,7 @@ class Character extends SpriteAnimationComponent
   double speed = 80;
   // bool isMoving = false;
 
-  final double spriteSheetWidth = 128, spriteSheetHeight = 128;
-
-
+  double spriteSheetWidth = 128, spriteSheetHeight = 128; 
 
   late SpriteAnimation idleAnimation,
       leftAnimation,
