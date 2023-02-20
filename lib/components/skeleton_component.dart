@@ -10,11 +10,11 @@ import 'package:worldxy04/maps/tile/object_component.dart';
 import 'package:worldxy04/maps/tile/water_component.dart';
 import 'package:worldxy04/utils/create_animation_by_limit.dart';
 
-class ZombieComponent extends EnemyCharacter {
+class SkeletonComponent extends EnemyCharacter {
   double elapseTime = 0;
   Vector2 mapSize;
 
-  ZombieComponent({required this.mapSize, required typeEnemyMovement, required movementTypes}) : super(typeEnemyMovement, movementTypes) {
+  SkeletonComponent({required this.mapSize, required typeEnemyMovement, required movementTypes}) : super(typeEnemyMovement, movementTypes) {
     debugMode = true;
   }
 
@@ -29,22 +29,22 @@ class ZombieComponent extends EnemyCharacter {
         srcSize: Vector2(spriteSheetWidth, spriteSheetHeight));
 
     idleAnimation = spriteSheet.createAnimationByLimit(
-        xInit: 0, yInit: 0, step: 3, sizeX: 3, stepTime: .2);
+        xInit: 0, yInit: 3, step: 6, sizeX: 9, stepTime: .2);
     downAnimation = spriteSheet.createAnimationByLimit(
-        xInit: 0, yInit: 0, step: 3, sizeX: 3, stepTime: .2);
+        xInit: 0, yInit: 3, step: 6, sizeX: 9, stepTime: .2);
     leftAnimation = spriteSheet.createAnimationByLimit(
-        xInit: 1, yInit: 0, step: 3, sizeX: 3, stepTime: .2);
+        xInit: 1, yInit: 3, step: 6, sizeX: 9, stepTime: .2);
     rightAnimation = spriteSheet.createAnimationByLimit(
-        xInit: 2, yInit: 0, step: 3, sizeX: 3, stepTime: .2);
+        xInit: 2, yInit: 3, step: 6, sizeX: 9, stepTime: .2);
     upAnimation = spriteSheet.createAnimationByLimit(
-        xInit: 3, yInit: 0, step: 3, sizeX: 3, stepTime: .2);
+        xInit: 3, yInit: 3, step: 6, sizeX: 9, stepTime: .2);
 
     body = RectangleHitbox(
         size: Vector2(
           spriteSheetWidth,
-          spriteSheetHeight - 30,
+          spriteSheetHeight - 10,
         ),
-        position: Vector2(0, 30))
+        position: Vector2(0, 10))
       ..collisionType = CollisionType.active;
 
     add(body);

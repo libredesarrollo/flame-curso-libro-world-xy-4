@@ -6,6 +6,7 @@ import 'package:flame/collisions.dart';
 
 import 'package:worldxy04/components/playerComponent.dart';
 import 'package:worldxy04/components/zombie_component.dart';
+import 'package:worldxy04/components/skeleton_component.dart';
 import 'package:worldxy04/maps/tile_map_component.dart';
 import 'package:worldxy04/helpers/enemy/movements.dart';
 
@@ -27,10 +28,10 @@ class MyGame extends FlameGame
                 0, 0, background.tiledMap.size.x, background.tiledMap.size.y));
         add(player);
 
-        enemiesMap1.forEach((e) => add(ZombieComponent(
-            mapSize: background.tiledMap.size,
-            movementTypes: e.movementEnemies,
-            typeEnemyMovement: e.typeEnemyMovement)..position=Vector2.all(50)));
+        // enemiesMap1.forEach((e) => add(SkeletonComponent(
+        //     mapSize: background.tiledMap.size,
+        //     movementTypes: e.movementEnemies,
+        //     typeEnemyMovement: e.typeEnemyMovement)..position=Vector2.all(50)));
       },
     );
 

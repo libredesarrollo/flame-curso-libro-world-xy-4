@@ -19,6 +19,18 @@ List<BehaviorEnemy> enemiesMap1 = [
   BehaviorEnemy(
       typeEnemyMovement: TypeEnemyMovement.random, typeEnemy: TypeEnemy.zombie),
   BehaviorEnemy(
+      typeEnemyMovement: TypeEnemyMovement.random, typeEnemy: TypeEnemy.skeleton),
+  BehaviorEnemy(
+      typeEnemyMovement: TypeEnemyMovement.random, typeEnemy: TypeEnemy.zombie),
+  BehaviorEnemy(
+      typeEnemyMovement: TypeEnemyMovement.random, typeEnemy: TypeEnemy.skeleton),
+  BehaviorEnemy(
+      typeEnemyMovement: TypeEnemyMovement.random, typeEnemy: TypeEnemy.skeleton),
+  BehaviorEnemy(
+      typeEnemyMovement: TypeEnemyMovement.random, typeEnemy: TypeEnemy.zombie),
+  BehaviorEnemy(
+      typeEnemyMovement: TypeEnemyMovement.random, typeEnemy: TypeEnemy.skeleton),
+  BehaviorEnemy(
       typeEnemyMovement: TypeEnemyMovement.pattern,
       typeEnemy: TypeEnemy.zombie,
       movementEnemies: [
@@ -31,7 +43,7 @@ List<BehaviorEnemy> enemiesMap1 = [
       ]),
   BehaviorEnemy(
       typeEnemyMovement: TypeEnemyMovement.pattern,
-      typeEnemy: TypeEnemy.zombie,
+      typeEnemy: TypeEnemy.skeleton,
       movementEnemies: [
         PlayerDirection.right,
         PlayerDirection.left

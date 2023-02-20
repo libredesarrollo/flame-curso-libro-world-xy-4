@@ -1,5 +1,8 @@
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
+import 'package:worldxy04/components/skeleton_component.dart';
+import 'package:worldxy04/components/zombie_component.dart';
+import 'package:worldxy04/helpers/enemy/movements.dart';
 
 import 'package:worldxy04/maps/tile/object_component.dart';
 import 'package:worldxy04/maps/tile/water_component.dart';
@@ -28,6 +31,27 @@ class TileMapComponent extends PositionComponent {
           size: Vector2(obj.width, obj.height),
           position: Vector2(obj.x, obj.y)));
     }
+
+    final objenemies = tiledMap.tileMap.getLayer<ObjectGroup>('enemies_object');
+
+    for (var i = 0; i < objenemies!.objects.length; i++) {
+      var e = enemiesMap1[i];
+     if(e.typeEnemy == TypeEnemy.zombie){
+       add(ZombieComponent(
+          mapSize: tiledMap.size,
+          movementTypes: e.movementEnemies,
+          typeEnemyMovement: e.typeEnemyMovement)
+        ..position = Vector2(objenemies.objects[i].x, objenemies.objects[i].y));
+     }else{
+       add(SkeletonComponent(
+          mapSize: tiledMap.size,
+          movementTypes: e.movementEnemies,
+          typeEnemyMovement: e.typeEnemyMovement)
+        ..position = Vector2(objenemies.objects[i].x, objenemies.objects[i].y));
+     }
+    }
+
+  
 
     // pos player
     final objPlayer = tiledMap.tileMap.getLayer<ObjectGroup>('player_object');
