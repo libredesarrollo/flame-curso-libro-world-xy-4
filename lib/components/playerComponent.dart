@@ -42,7 +42,8 @@ class PlayerComponent extends Character {
 
     body = RectangleHitbox(
         size: Vector2(spriteSheetWidth - 60, spriteSheetHeight - 40),
-        position: Vector2(30, 20))..collisionType = CollisionType.active;
+        position: Vector2(30, 20))
+      ..collisionType = CollisionType.active;
 
     add(body);
     reset();
@@ -142,7 +143,7 @@ class PlayerComponent extends Character {
   void _resetAnimation() {
     if (animation?.loop == false) {
       animation?.loop = true;
-      animation?.reset();
+      // animation?.reset();
     }
   }
 
@@ -167,7 +168,9 @@ class PlayerComponent extends Character {
           //   position.add(Vector2(delta * speed, 0));
           // }
           if (position.x < mapSize.x - size.x) {
-            position.add(Vector2(delta * speed * (movementType == MovementType.runright ? 3 : 1), 0));
+            position.add(Vector2(
+                delta * speed * (movementType == MovementType.runright ? 3 : 1),
+                0));
           }
 
           break;
@@ -181,7 +184,9 @@ class PlayerComponent extends Character {
           // }
 
           if (position.x > 0) {
-            position.add(Vector2(delta * -speed * (movementType == MovementType.runleft ? 3 : 1), 0));
+            position.add(Vector2(
+                delta * -speed * (movementType == MovementType.runleft ? 3 : 1),
+                0));
           }
 
           break;
@@ -194,7 +199,8 @@ class PlayerComponent extends Character {
           //   position.add(Vector2(0, delta * -speed));
           // }
           if (position.y > 0) {
-            position.add(Vector2(0, delta * -speed* (movementType == MovementType.runup ? 3 : 1)));
+            position.add(Vector2(0,
+                delta * -speed * (movementType == MovementType.runup ? 3 : 1)));
           }
           break;
         case MovementType.walkingdown:
@@ -206,7 +212,11 @@ class PlayerComponent extends Character {
           //   position.add(Vector2(0, delta * speed));
           // }
           if (position.y < mapSize.y - size.y) {
-            position.add(Vector2(0, delta * speed* (movementType == MovementType.rundown ? 3 : 1)));
+            position.add(Vector2(
+                0,
+                delta *
+                    speed *
+                    (movementType == MovementType.rundown ? 3 : 1)));
           }
           break;
         case MovementType.idle:

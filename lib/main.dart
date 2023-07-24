@@ -1,21 +1,25 @@
+import 'package:flame/experimental.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
-import 'package:flame/collisions.dart';
+
+import 'package:flame/components.dart';
 
 import 'package:worldxy04/components/playerComponent.dart';
-import 'package:worldxy04/components/zombie_component.dart';
-import 'package:worldxy04/components/skeleton_component.dart';
 import 'package:worldxy04/maps/tile_map_component.dart';
-import 'package:worldxy04/helpers/enemy/movements.dart';
 
 class MyGame extends FlameGame
     with HasKeyboardHandlerComponents, HasCollisionDetection {
+  final world = World();
+  late final CameraComponent cameraComponent;
+
   @override
-  Future<void>? onLoad() {
+  void onLoad() {
+    add(world);
+
     var background = TileMapComponent();
-    add(background);
+    world.add(background);
 
     background.loaded.then(
       (value) {
@@ -23,10 +27,20 @@ class MyGame extends FlameGame
             game: this,
             mapSize: background.tiledMap.size,
             posPlayer: background.posPlayer);
-        camera.followComponent(player,
-            worldBounds: Rect.fromLTRB(
-                0, 0, background.tiledMap.size.x, background.tiledMap.size.y));
-        add(player);
+
+        cameraComponent = CameraComponent(world: world);
+        cameraComponent.follow(player);
+        cameraComponent.setBounds(Rectangle.fromLTRB(
+            0, 0, background.tiledMap.size.x, background.tiledMap.size.y));
+        cameraComponent.viewfinder.anchor = Anchor.center;
+
+        add(cameraComponent);
+
+        cameraComponent.world.add(player);
+
+        // camera.followComponent(player,
+        //     worldBounds: Rect.fromLTRB(
+        //         0, 0, background.tiledMap.size.x, background.tiledMap.size.y));
 
         // enemiesMap1.forEach((e) => add(SkeletonComponent(
         //     mapSize: background.tiledMap.size,
