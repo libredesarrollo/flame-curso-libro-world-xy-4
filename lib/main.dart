@@ -36,7 +36,7 @@ class MyGame extends FlameGame
 
         add(cameraComponent);
 
-        cameraComponent.world.add(player);
+        world.add(player);
 
         // camera.followComponent(player,
         //     worldBounds: Rect.fromLTRB(

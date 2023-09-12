@@ -32,26 +32,27 @@ class TileMapComponent extends PositionComponent {
           position: Vector2(obj.x, obj.y)));
     }
 
-    final objenemies = tiledMap.tileMap.getLayer<ObjectGroup>('enemies_object');
+    final enemyObjects =
+        tiledMap.tileMap.getLayer<ObjectGroup>('enemies_object');
 
-    for (var i = 0; i < objenemies!.objects.length; i++) {
+    for (var i = 0; i < enemyObjects!.objects.length; i++) {
       var e = enemiesMap1[i];
-     if(e.typeEnemy == TypeEnemy.zombie){
-       add(ZombieComponent(
-          mapSize: tiledMap.size,
-          movementTypes: e.movementEnemies,
-          typeEnemyMovement: e.typeEnemyMovement)
-        ..position = Vector2(objenemies.objects[i].x, objenemies.objects[i].y));
-     }else{
-       add(SkeletonComponent(
-          mapSize: tiledMap.size,
-          movementTypes: e.movementEnemies,
-          typeEnemyMovement: e.typeEnemyMovement)
-        ..position = Vector2(objenemies.objects[i].x, objenemies.objects[i].y));
-     }
+      if (e.typeEnemy == TypeEnemy.zombie) {
+        add(ZombieComponent(
+            mapSize: tiledMap.size,
+            movementTypes: e.movementEnemies,
+            typeEnemyMovement: e.typeEnemyMovement)
+          ..position =
+              Vector2(enemyObjects.objects[i].x, enemyObjects.objects[i].y));
+      } else {
+        add(SkeletonComponent(
+            mapSize: tiledMap.size,
+            movementTypes: e.movementEnemies,
+            typeEnemyMovement: e.typeEnemyMovement)
+          ..position =
+              Vector2(enemyObjects.objects[i].x, enemyObjects.objects[i].y));
+      }
     }
-
-  
 
     // pos player
     final objPlayer = tiledMap.tileMap.getLayer<ObjectGroup>('player_object');
