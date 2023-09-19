@@ -29,21 +29,32 @@ class PlayerComponent extends Character {
         image: spriteImage,
         srcSize: Vector2(spriteSheetWidth, spriteSheetHeight));
 
+    // idleAnimation = spriteSheet.createAnimationByLimit(
+    //     xInit: 0, yInit: 0, step: 4, sizeX: 8, stepTime: .2);
+    // downAnimation = spriteSheet.createAnimationByLimit(
+    //     xInit: 0, yInit: 0, step: 4, sizeX: 8, stepTime: .2);
+    // leftAnimation = spriteSheet.createAnimationByLimit(
+    //     xInit: 1, yInit: 0, step: 4, sizeX: 8, stepTime: .2);
+    // rightAnimation = spriteSheet.createAnimationByLimit(
+    //     xInit: 2, yInit: 0, step: 4, sizeX: 8, stepTime: .2);
+    // upAnimation = spriteSheet.createAnimationByLimit(
+    //     xInit: 3, yInit: 0, step: 4, sizeX: 8, stepTime: .2);
+
     idleAnimation = spriteSheet.createAnimationByLimit(
-        xInit: 0, yInit: 0, step: 4, sizeX: 8, stepTime: .2);
+        xInit: 0, yInit: 1, step: 1, sizeX: 3, stepTime: .2);
     downAnimation = spriteSheet.createAnimationByLimit(
-        xInit: 0, yInit: 0, step: 4, sizeX: 8, stepTime: .2);
+        xInit: 0, yInit: 0, step: 3, sizeX: 3, stepTime: .2);
     leftAnimation = spriteSheet.createAnimationByLimit(
-        xInit: 1, yInit: 0, step: 4, sizeX: 8, stepTime: .2);
+        xInit: 1, yInit: 0, step: 3, sizeX: 3, stepTime: .2);
     rightAnimation = spriteSheet.createAnimationByLimit(
-        xInit: 2, yInit: 0, step: 4, sizeX: 8, stepTime: .2);
+        xInit: 2, yInit: 0, step: 3, sizeX: 3, stepTime: .2);
     upAnimation = spriteSheet.createAnimationByLimit(
-        xInit: 3, yInit: 0, step: 4, sizeX: 8, stepTime: .2);
+        xInit: 3, yInit: 0, step: 3, sizeX: 3, stepTime: .2);
 
     body = RectangleHitbox(
-        size: Vector2(spriteSheetWidth - 60, spriteSheetHeight - 40),
-        position: Vector2(30, 20))
-      ..collisionType = CollisionType.active;
+      size: Vector2(spriteSheetWidth, spriteSheetHeight),
+      // position: Vector2(30, 20)
+    )..collisionType = CollisionType.active;
 
     add(body);
     reset();
@@ -143,6 +154,7 @@ class PlayerComponent extends Character {
   void _resetAnimation() {
     if (animation?.loop == false) {
       animation?.loop = true;
+      animation = animation?.clone();
       // animation?.reset();
     }
   }

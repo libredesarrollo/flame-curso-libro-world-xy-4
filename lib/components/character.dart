@@ -20,7 +20,7 @@ class Character extends SpriteAnimationComponent
   MovementType movementType = MovementType.idle;
 
   PlayerDirection playerDirection = PlayerDirection.down;
-  
+
   PlayerDirection? playerCollisionDirection = null;
   PlayerDirection? playerCollisionDirectionTwo = null;
 
@@ -33,7 +33,8 @@ class Character extends SpriteAnimationComponent
   double speed = 80;
   // bool isMoving = false;
 
-  double spriteSheetWidth = 128, spriteSheetHeight = 128; 
+  double spriteSheetWidth = 32;
+  double spriteSheetHeight = 32;
 
   late SpriteAnimation idleAnimation,
       leftAnimation,
@@ -41,5 +42,5 @@ class Character extends SpriteAnimationComponent
       upAnimation,
       downAnimation;
 
-    late RectangleHitbox body;
+  late RectangleHitbox body;
 }
